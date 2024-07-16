@@ -22,6 +22,12 @@ const checkUsername = async (username: string) => {
   const url = `${rootUrl}${username}`;
   try {
     const response = await fetch(url);
+
+    if (response.status === 403) {
+      console.log(`⚠️ Rejected by the server, waiting 5 minutes`);
+      await sleep(300000);
+      return;
+    }
     if (response.status === 404) {
       fs.appendFileSync(
         "./dictionaries/usernames-claimable.txt",
@@ -41,7 +47,7 @@ const main = async () => {
   for (const username of usernamesToCheck) {
     console.log(`🔍 Checking the username ${username}`);
     await checkUsername(username);
-    await sleep(2000);
+    await sleep(3000);
   }
   console.log("🏁 All usernames have been checked");
 };
