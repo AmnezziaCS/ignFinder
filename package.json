@@ -1,0 +1,20 @@
+{
+  "name": "ignfinder",
+  "version": "1.0.0",
+  "description": "A simple script that scans accounts to find good claimable usernames",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "npm run test",
+    "dev": "tsx watch src/main.ts"
+  },
+  "author": "Amnezzia",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
