@@ -44,6 +44,7 @@ Follow these steps to get started:
 The configuration is done via the `.env` file. Here are the available options:
 
 - `ROOT_URL`: The base URL for the service (default: `https://github.com/`).
+- `MIN_LENGTH`: The minimum length of the usernames to check (default: `3`).
 
 ## Usage 📖
 

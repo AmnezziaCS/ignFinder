@@ -3,6 +3,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+if (!process.env.ROOT_URL || !parseInt(process.env.MIN_LENGTH)) {
+  console.error("Please provide a ROOT_URL and a MIN_LENGTH in your .env file");
+  process.exit(1);
+}
+
 const usernames = fs
   .readFileSync("./dictionaries/usernames.txt", "utf8")
   .split("\n");
@@ -10,9 +15,7 @@ const usernamesChecked = fs
   .readFileSync("./dictionaries/usernames-checked.txt", "utf8")
   .split("\n");
 
-const usernamesToCheck = usernames.filter(
-  (username) => !usernamesChecked.includes(username)
-);
+const minLength = parseInt(process.env.MIN_LENGTH);
 
 const rootUrl = process.env.ROOT_URL;
 
@@ -33,7 +36,7 @@ const checkUsername = async (username: string) => {
         "./dictionaries/usernames-claimable.txt",
         `${username}\n`
       );
-      console.log(`💵 The username ${username} is not taken`);
+      console.log(`💵 Username claimable: ${username}`);
     }
   } catch (error) {
     console.error(error);
@@ -44,7 +47,10 @@ const checkUsername = async (username: string) => {
 
 const main = async () => {
   console.log("⚙️ Starting the batch of checks\n");
-  for (const username of usernamesToCheck) {
+  for (const username of usernames) {
+    if (usernamesChecked.includes(username) || minLength >= username.length) {
+      continue;
+    }
     console.log(`🔍 Checking the username ${username}`);
     await checkUsername(username);
     await sleep(3000);
