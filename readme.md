@@ -12,32 +12,32 @@ Welcome to **ignFinder**! This project is a simple script that scans accounts to
 
 Follow these steps to get started:
 
-1. **Clone the repository**:
+### Clone the repository:
 
-    ```sh
-    git clone https://github.com/amnezziaa/ignFinder.git
-    cd ignFinder
-    ```
+```sh
+git clone https://github.com/AmnezziaCS/ignFinder.git
+cd ignFinder
+```
 
-2. **Install dependencies**:
+### Install dependencies:
 
-    ```sh
-    npm ci
-    ```
+```sh
+npm ci
+```
 
-3. **Create a `.env` file**:
+### Create a `.env` file:
 
-    Copy the `.env.example` to `.env` and configure it:
+Copy the `.env.example` to `.env` and configure it:
 
-    ```sh
-    cp .env.example .env
-    ```
+```sh
+cp .env.example .env
+```
 
-4. **Run the script**:
+### Run the script:
 
-    ```sh
-    npm run dev
-    ```
+```sh
+npm run dev
+```
 
 ## Configuration ⚙️
 
